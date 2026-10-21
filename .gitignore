@@ -1,0 +1,15 @@
+# Visual Studio
+.vs/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# uv
+.uv/
+
+# Sistema
+Thumbs.db
+desktop.ini
