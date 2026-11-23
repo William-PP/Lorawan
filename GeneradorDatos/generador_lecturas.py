@@ -12,7 +12,7 @@ import random
 
 from compresionHuffman.config import ALFABETOS
 
-ALFABETO = set(ALFABETOS["concreto"])
+ALFABETO = set(ALFABETOS["sensor"])
 NUM_CAMPOS = 5
 MODOS = ("uniforme", "normal", "senoidal")
 
