@@ -1,5 +1,5 @@
-from arbol_Huffman import construir_arbol, tabla_codigos
-from config import MAX_CONTEO, BYTES_LONGITUD
+from .arbol_Huffman import construir_arbol, tabla_codigos
+from .config import MAX_CONTEO, BYTES_LONGITUD
 
 def contar(texto, alfabeto):
     idx = indices(alfabeto)

@@ -1,5 +1,5 @@
-from config import LIMITE_PAYLOAD
-from codec import codificar
+from .config import LIMITE_PAYLOAD
+from .codec import codificar
 
 def agrupar(mensajes, alfabeto, sf):
     if sf not in LIMITE_PAYLOAD:
@@ -19,10 +19,15 @@ def agrupar(mensajes, alfabeto, sf):
     return n, trama
 
 
-def dividir(texto, longitud):
-    # DECISIÓN 3: longitud fija por lectura.
-    if longitud <= 0:
-        raise ValueError("La longitud de lectura debe ser mayor que 0")
-    if len(texto) % longitud:
-        raise ValueError("Texto no múltiplo de la longitud de lectura")
-    return [texto[i:i + longitud] for i in range(0, len(texto), longitud)]
+def dividir(texto):
+    """
+    Separa el texto descomprimido en lecturas (por '|') y campos (por '&').
+    Cada lectura debe terminar en '|'; si no, el bloque está corrupto.
+    """
+    if texto and not texto.endswith('|'):
+        raise ValueError("Bloque sin separador final: posible corrupción")
+
+    lecturas = []
+    for lectura in texto.split('|')[:-1]:   # el último elemento tras '|' es vacío
+        lecturas.append(lectura.split('&'))
+    return lecturas
